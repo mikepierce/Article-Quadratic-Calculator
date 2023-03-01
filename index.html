@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Quadratic Formula in a TI Calculator | Pierce</title>
+    <meta name="author" content="Mike Pierce">
+    <meta name="description" content="A guide to using GNU bc written with mathematicians and instructors in mind">
+
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all" href="../assets/main.css">
+    <link href="../feed/atom.xml" type="application/atom+xml" rel="alternate" title="Mike Pierce's Feed">
+    <link rel="stylesheet" href="../assets/highlight.min.css">
+    <style>body{background-image:linear-gradient(transparent, var(--background)), url("banner.webp");}</style>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js" integrity="sha384-zDX/4RkDnpVxZkjJjxdzDsT1Kk2XThh7u47fXdgZ1W8AMjb//F4ZK4G4y7oNVHM1" crossorigin="anonymous"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+
+<body>
+
+<header>
+<h1> Programming the Quadratic Formula into a TI 83/84+ Calculator</h1>
+<ul>
+    <li> <a href="..">Mike Pierce</a></li>
+    <li> Last tended 1 Mar 2023 </li>
+    <li> <a href="https://github.com/mikepierce/Article-Quadratic-Calculator">Suggest edits on GitHub</a></li>
+    <li class="print"> Hosted at <a class="url "href="https://org.coloradomesa.edu/~mapierce2/quadratic">coloradomesa.edu/~mapierce2/quadratic</a></li>
+</ul>
+</header>
+
+<main>
+<section>
+<p>
+    Once you know the quadratic formula, 
+    you can save time computing the roots of quadratic polynomials
+    by programming it into your calculator once-and-for-all. 
+</p>
+<p>
+    To create a new program in a TI 83/84+, press <kbd>PRGM</kbd>,
+    navigate over to the <code>NEW</code> menu,
+    and select <code>Create New</code>.
+    Now you’ll be asked to name your program; 
+    I’ve named mine <code>QUADRATIC</code>,
+    but you can name it whatever you desire.
+    Once you enter the name, 
+    you should see a screen like this <!-- TK what's the manual call it? -->
+    where you’ll write the program.
+</p>
+<figure>
+    <img src="img/empty.webp" title="the QUADRATIC program, empty for now">
+    <figcaption>
+        Screenshot: the <code>QUADRATIC</code> program, empty for now
+    </figcaption>
+</figure>
+<p>
+    For a quadratic equation \(ax^2 + bx + c\)
+    your program will need to do three things:
+    first <em>prompt</em> you to input 
+    the coefficients \(a\) and \(b\) and \(c\),
+    then calculate the roots using the quadratic formula,
+    and then <em>disp</em>lay those roots.
+</p>
+<aside>
+    If you ever exit this screen <!-- TK -->
+    and would like to return to it
+    you can do so by pressing <kbd>PRGM</kbd>,
+    navigating over to the <code>EDIT</code> menu,
+    and selecting your program.
+</aside>
+<ol>
+    <li>
+        While in this screen <!-- TK -->, pressing <kbd>PRGM</kbd> 
+        will present you with menus of programming-related keywords.
+        We’re interested in input/output keywords, so press <kbd>PRGM</kbd> 
+        and navigate over to the <code>I/O</code> menu.
+        Select <code>Prompt</code> and enter 
+        <code>Prompt A, B, C</code> as the first line of your program,
+        so when you run the program you’ll be prompted 
+        to enter values for <code>A</code> and <code>B</code> and <code>C</code>.
+        Note that the comma <kbd>,</kbd> button is above the <kbd>7</kbd> button.
+    </li>
+    <li>
+        The roots \(x\) of a quadratic equation are given by the formula
+        \[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \,.  \]
+        It’ll make for a cleaner program 
+        if you only compute that square root once, 
+        and store it to a variable, say <code>D</code>.
+        \[ x = \frac{-b \pm D}{2a} \quad\text{where } D = \sqrt{b^2-4ac} \]
+        The syntax for <em>sto</em>ring this value to <code>D</code>
+        is <code> √(B^2−4AC) → D </code>,
+        where you can enter that arrow <code>→</code> 
+        by pressing the <kbd>STO</kbd> button.
+    </li>
+    <li>
+        Finally to display the roots, 
+        return to the menu of input/output keywords
+        by pressing <kbd>PRGM</kbd> and selecting the <code>I/O</code> menu.
+        Select <code>Disp</code> then enter the value of the first root
+        <code>(-B−D)/(2A)</code>. Repeat this for the other root.
+    </li>
+</ol>
+<p>
+    Once finished your program should look like this:
+</p>
+<figure>
+    <img src="img/full.webp" title="the QUADRATIC program">
+    <figcaption>
+        Screenshot: the <code>QUADRATIC</code> program
+    </figcaption>
+</figure>
+<pre><code class="txt">
+: Prompt A, B, C
+: √(B^2−4AC) → D
+: Disp (-B−D)/(2A)
+: Disp (-B+D)/(2A)
+</code></pre>
+<p>
+    Before wrapping up,
+    you should test your program on a quadratic expression
+    with roots that you know, just to make sure the program works.
+    Using 
+    \[ 6(x-28)(x-496) \;\;=\;\; 6x^2 - 3144x + 83328 \]
+    and entering <code>A</code>\(=6\),
+    <code>B</code>\(=-3144\), and <code>C</code>\(=83328\):
+</p>
+<figure>
+    <img src="img/test.webp" title="testing the QUADRATIC program">
+    <figcaption>
+        Screenshot: testing the <code>QUADRADTIC</code> program
+    </figcaption>
+</figure>
+<p>
+    Delightful.
+</p>
+
+</section>
+</main>
+
+<footer>
+<ul>
+    <li> © <a href="..">Mike Pierce</a> </li>
+    <li> <a href="https://www.coloradomesa.edu/math-stat">CMU Math</a> </li>
+    <li> License <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">CC BY-NC-SA 4.0</a> </li>
+</ul>
+</footer>
+
+</body>
+</html>
+
