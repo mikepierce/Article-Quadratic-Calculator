@@ -7,7 +7,7 @@
 
     <title>Quadratic Formula in a TI Calculator | Pierce</title>
     <meta name="author" content="Mike Pierce">
-    <meta name="description" content="A guide to using GNU bc written with mathematicians and instructors in mind">
+    <meta name="description" content="A guide to write a program that computes the roots of a quadratic polynomial on a TI-83/84+ calculator">
 
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
@@ -25,7 +25,7 @@
 <body>
 
 <header>
-<h1> Programming the Quadratic Formula into a TI 83/84+ Calculator</h1>
+<h1> Programming the Quadratic Formula into a TI-83/84+ Calculator</h1>
 <ul>
     <li> <a href="..">Mike Pierce</a></li>
     <li> Last tended 1 Mar 2023 </li>
@@ -42,20 +42,22 @@
     by programming it into your calculator once-and-for-all. 
 </p>
 <p>
-    To create a new program in a TI 83/84+, press <kbd>PRGM</kbd>,
+    To create a new program in a TI-83/84+, press <kbd>PRGM</kbd>,
     navigate over to the <code>NEW</code> menu,
     and select <code>Create New</code>.
     Now you’ll be asked to name your program; 
-    I’ve named mine <code>QUADRATIC</code>,
+    I’ve named mine <code>QUAD</code>,
     but you can name it whatever you desire.
     Once you enter the name, 
-    you should see a screen like this <!-- TK what's the manual call it? -->
+    you should see a Program Editor screen like this
     where you’ll write the program.
+    Each colon <code>:</code> indicates
+    the beginning of a line of code.
 </p>
 <figure>
-    <img src="img/empty.webp" title="the QUADRATIC program, empty for now">
+    <img src="img/empty-83.webp" width="432" title="the QUAD program, empty for now">
     <figcaption>
-        Screenshot: the <code>QUADRATIC</code> program, empty for now
+        Screenshot: the <code>QUAD</code> program, empty for now.
     </figcaption>
 </figure>
 <p>
@@ -67,7 +69,7 @@
     and then <em>disp</em>lay those roots.
 </p>
 <aside>
-    If you ever exit this screen <!-- TK -->
+    If you exit the Program Editor screen
     and would like to return to it
     you can do so by pressing <kbd>PRGM</kbd>,
     navigating over to the <code>EDIT</code> menu,
@@ -75,12 +77,12 @@
 </aside>
 <ol>
     <li>
-        While in this screen <!-- TK -->, pressing <kbd>PRGM</kbd> 
+        While in the Program Editor, pressing <kbd>PRGM</kbd> 
         will present you with menus of programming-related keywords.
         We’re interested in input/output keywords, so press <kbd>PRGM</kbd> 
         and navigate over to the <code>I/O</code> menu.
         Select <code>Prompt</code> and enter 
-        <code>Prompt A, B, C</code> as the first line of your program,
+        <code>Prompt A,B,C</code> as the first line of your program,
         so when you run the program you’ll be prompted 
         to enter values for <code>A</code> and <code>B</code> and <code>C</code>.
         Note that the comma <kbd>,</kbd> button is above the <kbd>7</kbd> button.
@@ -93,9 +95,9 @@
         and store it to a variable, say <code>D</code>.
         \[ x = \frac{-b \pm D}{2a} \quad\text{where } D = \sqrt{b^2-4ac} \]
         The syntax for <em>sto</em>ring this value to <code>D</code>
-        is <code> √(B^2−4AC) → D </code>,
+        is <code> √(B²−4AC)→D </code>,
         where you can enter that arrow <code>→</code> 
-        by pressing the <kbd>STO</kbd> button.
+        by pressing the <kbd>STO→</kbd> button.
     </li>
     <li>
         Finally to display the roots, 
@@ -109,14 +111,14 @@
     Once finished your program should look like this:
 </p>
 <figure>
-    <img src="img/full.webp" title="the QUADRATIC program">
+    <img src="img/program-83.webp" width="432" title="the QUAD program">
     <figcaption>
-        Screenshot: the <code>QUADRATIC</code> program
+        Screenshot: the <code>QUAD</code> program
     </figcaption>
 </figure>
 <pre><code class="txt">
-: Prompt A, B, C
-: √(B^2−4AC) → D
+: Prompt A,B,C
+: √(B²−4AC)→D
 : Disp (-B−D)/(2A)
 : Disp (-B+D)/(2A)
 </code></pre>
@@ -124,19 +126,33 @@
     Before wrapping up,
     you should test your program on a quadratic expression
     with roots that you know, just to make sure the program works.
-    Using 
+    To <em>exec</em>ute your program,
+    press <kbd>PRGM</kbd> and find <code>QUAD</code>
+    under the <code>EXEC</code> menu.
+    Selecting it will place a <code>prgmQUAD</code> on the home screen;
+    press <kbd>ENTER</kbd> to run it.
+    Using the quadratic
     \[ 6(x-28)(x-496) \;\;=\;\; 6x^2 - 3144x + 83328 \]
     and entering <code>A</code>\(=6\),
     <code>B</code>\(=-3144\), and <code>C</code>\(=83328\):
 </p>
 <figure>
-    <img src="img/test.webp" title="testing the QUADRATIC program">
+    <img src="img/test-83.webp" width="432" title="testing the QUAD program">
     <figcaption>
-        Screenshot: testing the <code>QUADRADTIC</code> program
+        Screenshot: testing the <code>QUAD</code> program
     </figcaption>
 </figure>
 <p>
-    Delightful.
+    Delightful! Note that if you ever run this program 
+    and receive the error <code>ERR:NONREAL ANS</code>,
+    this indicates that the roots of the quadratic are not real.
+    I.e. \(ax^2+bx+c\) does not factor over the real numbers.
+    Algebraically speaking, this means \(b^2-4ac \lt 0\).
+</p>
+<p>
+    For more information on programming in your TI calculator,
+    consult the programming section in 
+    <a href="https://education.ti.com/en/guidebook/search/graphing-calculators" title="Texas Instruments Guidebooks">your calculator’s guidebook</a>.
 </p>
 
 </section>
