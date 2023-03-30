@@ -12,8 +12,9 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="all" href="../assets/main.css">
-    <link href="../feed/atom.xml" type="application/atom+xml" rel="alternate" title="Mike Pierce's Feed">
+    <link rel "alternate" href="../feed.xml" type="application/atom+xml" title="Mike Pierce's Feed">
     <link rel="stylesheet" href="../assets/highlight.min.css">
+    <style>@media only print {figure img {width:calc(100%/2.4); filter:brightness(120%) contrast(240%) saturate(40%);}}</style>
     <style>body{background-image:linear-gradient(transparent, var(--background)), url("banner.webp");}</style>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
@@ -28,8 +29,9 @@
 <h1> Programming the Quadratic Formula into a TI-83/84+ Calculator</h1>
 <ul>
     <li> <a href="..">Mike Pierce</a></li>
-    <li> Last tended 1 Mar 2023 </li>
-    <li> <a href="https://github.com/mikepierce/Article-Quadratic-Calculator">Suggest edits on GitHub</a></li>
+    <li> Last tended 29 Mar 2023 </li>
+    <li class="screen"> <a href="Quadratic Formula in a TI Calculator _ Pierce.pdf">Print PDF</a></li>
+    <li class="screen"> <a href="https://github.com/mikepierce/Article-Quadratic-Calculator">Suggest edits on GitHub</a></li>
     <li class="print"> Hosted at <a class="url "href="https://org.coloradomesa.edu/~mapierce2/quadratic">coloradomesa.edu/~mapierce2/quadratic</a></li>
 </ul>
 </header>
@@ -38,24 +40,24 @@
 <section>
 <p>
     Once you know the quadratic formula, 
-    you can save time computing the roots of quadratic polynomials
+    you can save time computing the roots (zeros) of quadratic polynomials
     by programming it into your calculator once-and-for-all. 
 </p>
 <p>
     To create a new program in a TI-83/84+, press <kbd>PRGM</kbd>,
     navigate over to the <code>NEW</code> menu,
     and select <code>Create New</code>.
-    Now you’ll be asked to name your program; 
-    I’ve named mine <code>QUAD</code>,
+    You’ll be asked to name your new program; 
+    the one in this guide is named <code>QUAD</code>,
     but you can name it whatever you desire.
-    Once you enter the name, 
+    Once you enter the name 
     you should see a Program Editor screen like this
     where you’ll write the program.
-    Each colon <code>:</code> indicates
+    That lonely colon <code>:</code> indicates
     the beginning of a line of code.
 </p>
 <figure>
-    <img src="img/empty-83.webp" width="288" title="the QUAD program, empty for now">
+    <img src="img/empty-83.webp" width="288" alt="PROGRAM:QUAD \\ :" title="the QUAD program, empty for now">
     <figcaption>
         TI-83+ Screenshot: the <code>QUAD</code> program, empty for now.
     </figcaption>
@@ -66,7 +68,7 @@
     first <em>prompt</em> you to input 
     the coefficients \(a\) and \(b\) and \(c\),
     then calculate the roots using the quadratic formula,
-    and then <em>disp</em>lay those roots.
+    and then <em>display</em> those roots.
 </p>
 <aside>
     If you exit the Program Editor screen
@@ -77,41 +79,55 @@
 </aside>
 <ol>
     <li>
+        <h4> Prompting for the Coefficients </h4>
         While in the Program Editor, pressing <kbd>PRGM</kbd> 
         will present you with menus of programming-related keywords.
         We’re interested in input/output keywords, so press <kbd>PRGM</kbd> 
         and navigate over to the <code>I/O</code> menu.
         Select <code>Prompt</code> and enter 
-        <code>Prompt A,B,C</code> as the first line of your program,
-        so when you run the program you’ll be prompted 
-        to enter values for <code>A</code> and <code>B</code> and <code>C</code>.
-        Note that the comma <kbd>,</kbd> button is above the <kbd>7</kbd> button.
+        <code>Prompt A,B,C</code> as the first line of your program.
+        Now when the program is executed,
+        it will prompt for values of <code>A</code> 
+        and <code>B</code> and <code>C</code> to be entered.
+        Note that the comma <kbd>,</kbd> button 
+        is above the <kbd>7</kbd> button.
     </li>
     <li>
-        The roots \(x\) of a quadratic equation are given by the formula
+        <h4> Calculating the Roots </h4>
+        The roots \(x\) of a quadratic polynomial are given by
         \[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a} \,.  \]
         It’ll make for a cleaner program 
         if you only compute that square root once, 
         and store it to a variable, say <code>D</code>.
         \[ x = \frac{-b \pm D}{2a} \quad\text{where } D = \sqrt{b^2-4ac} \]
         The syntax for <em>sto</em>ring this value to <code>D</code>
-        is <code> √(B²−4AC)→D </code>,
+        is <code>√(B²−4AC)→D</code>,
         where you can enter that arrow <code>→</code> 
         by pressing the <kbd>STO→</kbd> button.
+        It would be similarly convenient 
+        to calculate then store the roots to variables.
+        Store the first root to 
+        <code>R</code> for “<code>R</code>oot”,
+        and store the other root to 
+        <code>T</code> for “<code>T</code>he other root”
+        with the lines <code>(-B−D)/(2A)→R</code> 
+        and <code>(-B+D)/(2A)→T</code>.
     </li>
     <li>
+        <h4> Displaying the Roots </h4>
         Finally to display the roots, 
         return to the menu of input/output keywords
         by pressing <kbd>PRGM</kbd> and selecting the <code>I/O</code> menu.
-        Select <code>Disp</code> then enter the value of the first root
-        <code>(-B−D)/(2A)</code>. Repeat this for the other root.
+        Select <code>Disp</code> then enter the line
+        <code>Disp R,T</code> to display the roots.
+
     </li>
 </ol>
 <p>
     Once finished your program should look like this:
 </p>
 <figure>
-    <img src="img/program-83.webp" width="288" title="the QUAD program">
+    <img src="img/program-83.webp" width="288" alt="PROGRAM:QUAD \\ :Prompt A,B,C \\ :√(B²-4AC)→D \\ :Disp (-B-D)/(2A) \\ :Disp (-B+D)/(2A)" title="the QUAD program">
     <figcaption>
         TI-83+ Screenshot: the <code>QUAD</code> program
     </figcaption>
@@ -119,25 +135,26 @@
 <pre><code class="txt">
 : Prompt A,B,C
 : √(B²−4AC)→D
-: Disp (-B−D)/(2A)
-: Disp (-B+D)/(2A)
+: (-B−D)/(2A)→R
+: (-B+D)/(2A)→T
+: Disp R,T
 </code></pre>
 <p>
     Before wrapping up,
-    you should test your program on a quadratic expression
+    you should test your program on a quadratic polynomial
     with roots that you know, just to make sure the program works.
-    To <em>exec</em>ute your program,
+    To run your freshly written program,
     press <kbd>PRGM</kbd> and find <code>QUAD</code>
     under the <code>EXEC</code> menu.
     Selecting it will place a <code>prgmQUAD</code> on the home screen;
     press <kbd>ENTER</kbd> to run it.
-    Using the quadratic
+    Referring to the quadratic polynomial
     \[ 6(x-28)(x-496) \;\;=\;\; 6x^2 - 3144x + 83328 \]
-    and entering <code>A</code>\(=6\),
-    <code>B</code>\(=-3144\), and <code>C</code>\(=83328\):
+    enter <code>A</code>\(=6\),
+    <code>B</code>\(=-3144\), and <code>C</code>\(=83328\).
 </p>
 <figure>
-    <img src="img/test-83.webp" width="288" title="testing the QUAD program">
+    <img src="img/test-83.webp" width="288" alt="pgrmQUAD \\ A=?6 \\ B=?-3144 \\ C=?83328 \\ \\ 28 \\ 496 \\ Done" title="testing the QUAD program">
     <figcaption>
         TI-83+ Screenshot: testing the <code>QUAD</code> program
     </figcaption>
@@ -147,7 +164,7 @@
     and receive the error <code>ERR:NONREAL ANS</code>,
     this indicates that the roots of the quadratic are not real.
     I.e. \(ax^2+bx+c\) does not factor over the real numbers.
-    Algebraically speaking, this means \(b^2-4ac \lt 0\).
+    Algebraically speaking, this is because \(b^2-4ac \lt 0\).
 </p>
 <p>
     For more information on programming in your TI calculator,
