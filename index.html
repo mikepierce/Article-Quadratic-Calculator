@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="../assets/main.css">
     <link rel="alternate" href="../feed.xml" type="application/atom+xml" title="Mike Pierce's Feed">
     <link rel="stylesheet" href="../assets/highlight.min.css">
-    <style>@media only print {figure img {width:192px; filter:brightness(150%) grayscale(50%);}}</style>
+    <style>@media only print {figure img {width:162px; filter:brightness(150%) grayscale(50%);}}</style>
     <style>body{background-image:linear-gradient(transparent, var(--background)), url("banner.webp");}</style>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
@@ -28,9 +28,9 @@
 <h1>Programming the Quadratic Formula into a TI-83/84+ Calculator</h1>
 <ul>
     <li> <a href="..">Mike Pierce</a></li>
-    <li> Tended 25 November 2023 </li>
+    <li> Tended 4 January 2024 </li>
     <li class="screen"> <a href="Quadratic Formula in a TI Calculator _ Mike Pierce.pdf">Print PDF</a></li>
-    <li class="screen"> Suggest edits: <a href="https://github.com/mikepierce/Article-Quadratic-Calculator">Fork on GitHub</a></li>
+    <li class="screen"> Contribute: <a href="https://github.com/mikepierce/Article-Quadratic-Calculator">Fork on GitHub</a></li>
     <li class="print"> Hosted at <a class="url "href="https://org.coloradomesa.edu/~mapierce2/quadratic">coloradomesa.edu/~mapierce2/quadratic</a></li>
 </ul>
 </header>
@@ -77,7 +77,7 @@
     first <em>prompt</em> you to input 
     the coefficients \(a\) and \(b\) and \(c\),
     then calculate the roots using the quadratic formula,
-    and then <em>display</em> those roots.
+    and then <em>display</em> those roots on the home screen.
 </p>
 <ol>
     <li>
@@ -134,14 +134,16 @@
         TI-83+ Screenshot: the <code>QUAD</code> program
     </figcaption>
     </div>
-</figure>
+    <div>
 <pre>
 <code class="txt">: Prompt A,B,C
 : √(B²−4AC)→D
 : (-B−D)/(2A)→R
 : (-B+D)/(2A)→T
-: Disp R,T</code>
+: Disp R,T                 </code>
 </pre>
+    </div>
+</figure>
 <p>
     To finish up, you should test your program 
     on a quadratic polynomial with roots that you know
