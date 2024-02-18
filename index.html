@@ -14,7 +14,14 @@
     <link rel="stylesheet" type="text/css" media="all" href="../assets/main.css">
     <link rel="alternate" href="../feed.xml" type="application/atom+xml" title="Mike Pierce's Feed">
     <link rel="stylesheet" href="../assets/highlight.min.css">
-    <style>@media only print {figure img {width:192px; filter:brightness(150%) grayscale(50%);}}</style>
+    <style media="print">
+        @page {size:letter; margin:0.4in 0.4in 0.6in 0.4in;}
+        h1 {font-size:30pt;} 
+        body {font-size:9pt; line-height:12pt;} 
+        main {column-count:2; column-gap:0.2in; column-fill:auto;}
+        figure {width:80%;}
+        figure img {width:192px; filter:brightness(150%) grayscale(50%);}
+    </style>
     <style>body{background-image:linear-gradient(transparent, var(--background)), url("banner.webp");}</style>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
